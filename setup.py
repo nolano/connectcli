@@ -8,7 +8,7 @@ setup(
     author_email = "last_yearv@163.com",
     description = "app store connect api cli user apikey and issuer_id to authorize",
     license = "MIT",
-    url = "http://example.com/HelloWorld/",
+    url = "https://github.com/agony5/connectcli",
     install_requires=[
         'Click',
         'requests',
