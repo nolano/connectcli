@@ -6,6 +6,9 @@ setup(
     packages=find_packages(),
     author = "yuyuan yue",
     author_email = "last_yearv@163.com",
+    include_package_data=True,
+    exclude_package_date={'':['.gitignore']},
+    license = 'MIT',
     description = "app store connect api cli user apikey and issuer_id to authorize",
     url = "https://github.com/agony5/connectcli",
     install_requires=[
@@ -13,14 +16,10 @@ setup(
         'requests',
         'authlib'
     ],
-    classifiers=[
-        "Programming Language :: Python :: 3",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-    ],
-    python_requires='>=3.6',
-    entry_points='''
-        [console_scripts]
-        connectcli=connectcli.main:cli
-    ''',
+    entry_points={
+        'console_scripts': [
+            'connectcli = connectcli.main:main'
+        ]
+    },
+    python_requires='>=3.6'
 )
