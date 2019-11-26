@@ -28,10 +28,6 @@ class ConnectApi(object):
     
     ##设备列表
     def list_devices(self,limit=100,sort='id'):
-        if not limit:
-            limit = 100
-        if not sort:
-            sort = 'id'
         return Device.list_devices(limit,sort)
     
     ## 注册证书

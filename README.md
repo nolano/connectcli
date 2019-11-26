@@ -13,6 +13,11 @@ source venv/bin/activate
 3.退出环境
 deactivate
 
+4.编译
+python setup.py install
+
+5.运行
+connectcli
 
 ### 第三方库
 pip3 install authlib
