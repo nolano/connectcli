@@ -2,7 +2,7 @@ from setuptools import setup,find_namespace_packages
 
 setup(
     name='connectcli',
-    version='1.0.0',
+    version='1.0.1',
     package_dir={'': 'connect_apk'},
     packages=find_namespace_packages(where='connect_apk'),
     author = "yuyuan yue",
@@ -10,8 +10,8 @@ setup(
     include_package_data=True,
     exclude_package_data={'':['.gitignore']},
     license = 'MIT',
-    description = "app store connect api cli user apikey and issuer_id to authorize",
-    url = "https://github.com/agony5/connectcli",
+    description = "app store connect api cli use apikey and issuer_id to authorize",
+    url = "https://github.com/hepburnv/connectcli",
     install_requires=[
         'Click',
         'requests',

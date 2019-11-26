@@ -15,7 +15,7 @@ import click
 @click.pass_context
 def cli(ctx, apikey, issuer_id,privatekey_path):
     '''
-    app store connect api cli with python user apikey private_key and issuer_id to authorize
+    app store connect api cli with python use apikey private_key and issuer_id to authorize
     
     how to get apikey,private_key and issuer_id ? https://developer.apple.com/documentation/appstoreconnectapi
     '''
@@ -191,46 +191,46 @@ cli.add_command(requestprofile)
 
 if __name__ == '__main__':
     cli()
-    # api = ConnectApi('T5VR6D3TZY','5127e6a3-99ef-458f-9ea3-ba6b76e9cc13')
+    api = ConnectApi('T5VR6D3TZY','5127e6a3-99ef-458f-9ea3-ba6b76e9cc13')
     
-    # devices = api.list_devices(limit=1)
-    # print(devices)
+    devices = api.list_devices(limit=1)
+    print(devices)
     
-    # result = api.register_device('test','test')
-    # print(result)
+    result = api.register_device('test','test')
+    print(result)
     
-    # result = api.register_certificate(csr_path='/Users/last/Desktop/CertificateSigningRequest.certSigningRequest')
-    # print(result)
+    result = api.register_certificate(csr_path='/Users/last/Desktop/CertificateSigningRequest.certSigningRequest')
+    print(result)
     
-    # result = api.delete_certificate('N9P79WJTHK')
-    # print(result)
+    result = api.delete_certificate('N9P79WJTHK')
+    print(result)
     
-    # result = api.list_certificates()
-    # print(result)
+    result = api.list_certificates()
+    print(result)
     
-    # result = api.register_bundle_id(bundle_id='com.hepburn.app',team_id='6DD349HLLU',name='hepburn')
-    # print(result)
+    result = api.register_bundle_id(bundle_id='com.hepburn.app',team_id='6DD349HLLU',name='hepburn')
+    print(result)
     
-    # result = api.list_bundle_ids()
-    # print(result)
+    result = api.list_bundle_ids()
+    print(result)
     
-    # result = api.get_bundle_id('N49MX9AWAX')
-    # print(result)
+    result = api.get_bundle_id('N49MX9AWAX')
+    print(result)
     
-    # result = api.get_bundle_id_profiles('N49MX9AWAX')
-    # print(result)
+    result = api.get_bundle_id_profiles('N49MX9AWAX')
+    print(result)
     
-    # result = api.delete_bundle_id('N49MX9AWAX')
-    # print(result)
+    result = api.delete_bundle_id('N49MX9AWAX')
+    print(result)
     
-    # result = api.create_profile(name='adhoc1',bundle_id='VSLGJ82UHW',certificate_id='T553J666XW',type='IOS_APP_DEVELOPMENT')
-    # print(result)
+    result = api.create_profile(name='adhoc1',bundle_id='VSLGJ82UHW',certificate_id='T553J666XW',type='IOS_APP_DEVELOPMENT')
+    print(result)
     
-    # result = api.delete_profile('4KVXW4LK52')
-    # print(result)
+    result = api.delete_profile('4KVXW4LK52')
+    print(result)
     
-    # result = api.list_profiles()
-    # print(result)
+    result = api.list_profiles()
+    print(result)
     
-    # result = api.request_profile('4KVXW4LK52')
-    # print(result)
+    result = api.request_profile('4KVXW4LK52')
+    print(result)
