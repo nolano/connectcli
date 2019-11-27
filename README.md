@@ -77,7 +77,7 @@ https://api.appstoreconnect.apple.com/v1/devices
 ### API
  
 ```
-from connectcli import ConnectApi
+from connectapi import ConnectApi
 
 if __name__ == '__main__':
     api = ConnectApi('T5VR6D3TZY','5127e6a3-99ef-458f-9ea3-ba6b76e9cc13')
