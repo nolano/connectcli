@@ -33,3 +33,15 @@ class Certificate(object):
     @classmethod
     def list_cerificate(cls,limit,sort):
         return ConnectManager().list_certificates(ConnectApi.connect_api_certificates.value[0],limit,sort)
+    
+    @classmethod
+    def download_certificates(cls,outpath,limit,sort):
+        result = Certificate.list_cerificate(limit,sort)
+        if result['status'] == 200:
+            array = result['data']['data']
+            for cert_obj in array:
+                encodeStr = cert_obj['attributes']['certificateContent']
+                decodeStr = connectool.base64decode(encodeStr)
+                filename = cert_obj['attributes']['name']+'.cer'
+                connectool.saveByteFile(decodeStr,os.path.join(outpath,str(filename)))
+        return result

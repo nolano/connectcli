@@ -111,4 +111,8 @@ class ConnectApi(object):
     # id
     def request_profile(self,id):
         return Profile.request_profile(id)
-        
+    
+    ## 下载证书
+    #outpath 输出路径
+    def download_certificates(self,outpath,limit=100,id='id'):
+        return Certificate.download_certificates(outpath,limit,id)

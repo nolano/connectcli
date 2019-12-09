@@ -4,7 +4,7 @@ setup(
     name='connectcli',
     description = "app store connect api cli use apikey and issuer_id to authorize",
     url = "https://github.com/hepburnv/connectcli",
-    version='1.0.2',
+    version='1.0.3',
     author = "yuyuan yue",
     author_email = "last_yearv@163.com",
     license = 'MIT',

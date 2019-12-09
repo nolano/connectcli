@@ -168,6 +168,16 @@ def requestprofile(api,id):
     click.echo(json.dumps(result))
     return result
 
+@click.command()
+@click.option('-o','--out','outpath',type=click.Path(exists=True),default=lambda: os.environ.get('HOME', ''),metavar='',help='file out path , default user root path')
+@click.option('-l','--limit','limit',default=100,metavar='', help='the certificates count,default 100')
+@click.option('-s','--sort','sort',default='id',metavar='',help='the certificates sort,default id')
+@click.pass_obj
+def downloadcerts(api,outpath,limit,sort):
+    '''download certificate with limit and sort '''
+    result = api.download_certificates(outpath,limit,sort)
+    click.echo(json.dumps(result))
+    return result
 
 cli.add_command(registerdevice)
 cli.add_command(devices)
@@ -175,6 +185,7 @@ cli.add_command(devices)
 cli.add_command(registercertificate)
 cli.add_command(deletecertificate)
 cli.add_command(certificates)
+cli.add_command(downloadcerts)
 
 cli.add_command(registerbundleid)
 cli.add_command(bundleids)
