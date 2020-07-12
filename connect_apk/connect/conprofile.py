@@ -44,3 +44,15 @@ class Profile(object):
     @classmethod
     def request_profile(cls,id):
         return ConnectManager().request_profile(ConnectApi.connect_api_profiles.value[0],id)
+    
+    @classmethod
+    def download_profiles(cls,outpath,limit,sort):
+        result = Profile.list_profiles(limit,sort)
+        if result['status'] == 200:
+            array = result['data']['data']
+            for cert_obj in array:
+                encodeStr = cert_obj['attributes']['profileContent']
+                decodeStr = connectool.base64decode(encodeStr)
+                filename = cert_obj['attributes']['name'] + '.mobileprovision'
+                connectool.saveByteFile(decodeStr, os.path.join(outpath, str(filename)))
+        return result

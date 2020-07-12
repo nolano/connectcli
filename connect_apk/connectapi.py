@@ -116,3 +116,8 @@ class ConnectApi(object):
     #outpath 输出路径
     def download_certificates(self,outpath,limit=100,id='id'):
         return Certificate.download_certificates(outpath,limit,id)
+    
+    ## Download profiles
+    # outpath Output path
+    def download_profiles(self,outpath,limit=100,id='id'):
+        return Profile.download_profiles(outpath,limit,id)

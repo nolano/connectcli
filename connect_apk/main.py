@@ -179,6 +179,17 @@ def downloadcerts(api,outpath,limit,sort):
     click.echo(json.dumps(result))
     return result
 
+@click.command()
+@click.option('-o','--out','outpath',type=click.Path(exists=True),default=lambda: os.environ.get('HOME', ''),metavar='',help='file out path , default user root path')
+@click.option('-l','--limit','limit',default=100,metavar='', help='the profiles count,default 100')
+@click.option('-s','--sort','sort',default='id',metavar='',help='the profiles sort,default id')
+@click.pass_obj
+def downloadprofiles(api,outpath,limit,sort):
+    '''download profile with limit and sort '''
+    result = api.download_profiles(outpath,limit,sort)
+    click.echo(json.dumps(result))
+    return result
+
 cli.add_command(registerdevice)
 cli.add_command(devices)
 
@@ -197,6 +208,7 @@ cli.add_command(createprofile)
 cli.add_command(deleteprofile)
 cli.add_command(profiles)
 cli.add_command(requestprofile)
+cli.add_command(downloadprofiles)
 
 
 
