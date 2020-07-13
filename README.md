@@ -112,9 +112,12 @@ if __name__ == '__main__':
     result = api.delete_bundle_id('N49MX9AWAX')
     print(result)
 
-    result = api.createappversion(app_id='123456', version_string='1.2.3', platform='IOS', 
+    result = api.create_app_version(app_id='123456', version_string='1.2.3', platform='IOS', 
                                     release_type='AFTER_APPROVAL', copyright='2020 My Company', build_id='123', 
                                     earliest_release_date=None, uses_idfa=False)
+    print(result)
+    
+    result = api.get_app_version_localizations('a1a2a3a4-a1a2-a1a2-a1a2-a1a2a3a4a5a6')
     print(result)
     
     result = api.create_profile(name='adhoc1',bundle_id='VSLGJ82UHW',certificate_id='T553J666XW',type='IOS_APP_DEVELOPMENT')

@@ -66,6 +66,11 @@ class ConnectApi(object):
                                             release_type = release_type, copyright = copyright, build_id = build_id,
                                             earliest_release_date = earliest_release_date, uses_idfa = uses_idfa)
     
+    ## Query App version localized info
+    # id App version id
+    def get_app_version_localizations(self, id):
+        return AppVersion.get_app_version_localizations(id)
+    
     ## 注册bundle id
     # bundle_id 包名（app 唯一标识）
     # team_id 开发者唯一标识

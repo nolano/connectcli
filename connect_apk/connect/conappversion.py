@@ -29,3 +29,9 @@ class AppVersion(object):
         if result['status'] == 201:
             return {'status': 200, 'data': result['data']}
         return result
+    
+    ## Query App version localized info
+    # id App version id
+    @classmethod
+    def get_app_version_localizations(cls, id):
+        return ConnectManager().get_app_version_localizations(ConnectApi.connect_api_app_versions.value[0], id)

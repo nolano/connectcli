@@ -151,7 +151,13 @@ class ConnectManager(metaclass=SingletonMeta):
         # Add build relationship if there is a build ID
         if build_id != None:
             params['data']['relationships']['build'] = {"data": {"id": build_id, "type": "builds"}}
-        return netmanager.post(url, params = params, header = self.__header)    
+        return netmanager.post(url, params = params, header = self.__header)
+    
+    ## Query App version localized info
+    # id App version id
+    def get_app_version_localizations(self, url:str, id):
+        url = f'{url}/{id}/appStoreVersionLocalizations'
+        return netmanager.get(url, header=self.__header)
     
     ## 创建profile 文件
     # name profile name
