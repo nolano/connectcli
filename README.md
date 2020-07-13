@@ -127,5 +127,8 @@ if __name__ == '__main__':
     
     result = api.list_apps()
     print(result)
+    
+    result = api.get_app_versions('123456')
+    print(result)
 
 ```

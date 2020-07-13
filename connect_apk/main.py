@@ -200,6 +200,15 @@ def apps(api, limit, sort, filter_bundle_id):
     click.echo(json.dumps(result))
     return result
 
+@click.command()
+@click.option('-i', '--id', 'id', metavar='', help='the app id', required=True)
+@click.pass_obj
+def getappversions(api, id):
+    '''get app versions with id '''
+    result = api.get_app_versions(id)
+    click.echo(json.dumps(result))
+    return result
+
 cli.add_command(registerdevice)
 cli.add_command(devices)
 
@@ -221,6 +230,7 @@ cli.add_command(requestprofile)
 cli.add_command(downloadprofiles)
 
 cli.add_command(apps)
+cli.add_command(getappversions)
 
 
 
@@ -271,4 +281,7 @@ if __name__ == '__main__':
     print(result)
     
     result = api.list_apps()
+    print(result)
+    
+    result = api.get_app_versions('123456')
     print(result)

@@ -177,3 +177,9 @@ class ConnectManager(metaclass=SingletonMeta):
         if filter_bundle_id != None:
             params['filter[bundleId]'] = filter_bundle_id
         return netmanager.get(url,params=params,header=self.__header)
+    
+    ## Query app versions
+    # id App id
+    def get_app_versions(self, url:str, id):
+        url = f'{url}/{id}/appStoreVersions'
+        return netmanager.get(url, header = self.__header)
