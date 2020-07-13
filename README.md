@@ -111,6 +111,11 @@ if __name__ == '__main__':
     
     result = api.delete_bundle_id('N49MX9AWAX')
     print(result)
+
+    result = api.createappversion(app_id='123456', version_string='1.2.3', platform='IOS', 
+                                    release_type='AFTER_APPROVAL', copyright='2020 My Company', build_id='123', 
+                                    earliest_release_date=None, uses_idfa=False)
+    print(result)
     
     result = api.create_profile(name='adhoc1',bundle_id='VSLGJ82UHW',certificate_id='T553J666XW',type='IOS_APP_DEVELOPMENT')
     print(result)

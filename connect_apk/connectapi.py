@@ -8,6 +8,7 @@ from connect.contoken import ConnectToken
 from connect.conrequest import ConnectManager
 from connect.condevice import Device
 from connect.concertificate import Certificate
+from connect.conappversion import AppVersion
 from connect.conbundle import BundleIdentifier
 from connect.conprofile import Profile
 
@@ -48,6 +49,22 @@ class ConnectApi(object):
     # sort Possible values: certificateType, -certificateType, displayName, -displayName, id, -id, serialNumber, -serialNumber
     def list_certificates(self,limit=100,sort='id'):
         return Certificate.list_certificates(limit,sort)
+    
+    ## Create an app store version
+    # app_id App id
+    # version_string Version like '1.0.0'
+    # copyright Proprietary company or person
+    # build_id Build id related to the version
+    # release_type Possible values: MANUAL, AFTER_APPROVAL, SCHEDULED
+    # platform Possible values: IOS, MAC_OS, TV_OS
+    # earliest_release_date Date-time
+    # uses_idfa If app uses IDFA
+    def create_app_version(self, app_id, version_string, platform = 'IOS',
+                            release_type = 'MANUAL', copyright = '', build_id = None,
+                            earliest_release_date = None, uses_idfa = False):
+        return AppVersion.create_app_version(app_id = app_id, version_string = version_string, platform = platform,
+                                            release_type = release_type, copyright = copyright, build_id = build_id,
+                                            earliest_release_date = earliest_release_date, uses_idfa = uses_idfa)
     
     ## 注册bundle id
     # bundle_id 包名（app 唯一标识）

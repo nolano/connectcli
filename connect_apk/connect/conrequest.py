@@ -120,6 +120,39 @@ class ConnectManager(metaclass=SingletonMeta):
         connectool.prints(params)
         return netmanager.get(url,params=params,header=self.__header)  
     
+    ## Create an app store version
+    # app_id App id
+    # version_string Version like '1.0.0'
+    # copyright Proprietary company or person
+    # build_id Build id related to the version
+    # release_type Possible values: MANUAL, AFTER_APPROVAL, SCHEDULED
+    # platform Possible values: IOS, MAC_OS, TV_OS
+    # earliest_release_date Date-time
+    # uses_idfa If app uses IDFA
+    def create_app_version(self, url:str, app_id, version_string, platform = 'IOS', # required fields
+                            release_type = 'MANUAL', copyright = '', build_id = None,
+                            earliest_release_date = None, uses_idfa = False):
+        params = {
+            "data": {
+                "relationships": {
+                    "app": {"data": {"id": app_id, "type": "apps"}}
+                },
+                "attributes": {
+                    "versionString": version_string,
+                    "platform": platform,
+                    "copyright": copyright,
+                    "releaseType": release_type,
+                    "earliestReleaseDate": earliest_release_date,
+                    "usesIdfa": uses_idfa
+                },
+                "type": "appStoreVersions"
+            }
+        }
+        # Add build relationship if there is a build ID
+        if build_id != None:
+            params['data']['relationships']['build'] = {"data": {"id": build_id, "type": "builds"}}
+        return netmanager.post(url, params = params, header = self.__header)    
+    
     ## 创建profile 文件
     # name profile name
     # profileType IOS_APP_DEVELOPMENT, IOS_APP_STORE, IOS_APP_ADHOC
@@ -167,6 +200,6 @@ class ConnectManager(metaclass=SingletonMeta):
         connectool.prints(url)
         connectool.prints(self.__header)
         return netmanager.get(url,header=self.__header) 
-    
 
-    
+
+
