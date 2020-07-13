@@ -20,7 +20,7 @@ class AppVersion(object):
     # uses_idfa If app uses IDFA
     @classmethod
     def create_app_version(cls, app_id, version_string, platform = 'IOS',
-                            release_type = 'MANUAL', copyright = '', build_id = None,
+                            release_type = 'MANUAL', copyright = None, build_id = None,
                             earliest_release_date = None, uses_idfa = False):
         result = ConnectManager().create_app_version(ConnectApi.connect_api_app_versions.value[0],
                                                     app_id = app_id, version_string = version_string, platform = platform,

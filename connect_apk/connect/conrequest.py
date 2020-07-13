@@ -130,7 +130,7 @@ class ConnectManager(metaclass=SingletonMeta):
     # earliest_release_date Date-time
     # uses_idfa If app uses IDFA
     def create_app_version(self, url:str, app_id, version_string, platform = 'IOS', # required fields
-                            release_type = 'MANUAL', copyright = '', build_id = None,
+                            release_type = 'MANUAL', copyright = None, build_id = None,
                             earliest_release_date = None, uses_idfa = False):
         params = {
             "data": {
@@ -140,7 +140,6 @@ class ConnectManager(metaclass=SingletonMeta):
                 "attributes": {
                     "versionString": version_string,
                     "platform": platform,
-                    "copyright": copyright,
                     "releaseType": release_type,
                     "earliestReleaseDate": earliest_release_date,
                     "usesIdfa": uses_idfa
@@ -148,6 +147,8 @@ class ConnectManager(metaclass=SingletonMeta):
                 "type": "appStoreVersions"
             }
         }
+        if copyright != None:
+            params['data']['attributes']['copyright'] = copyright
         # Add build relationship if there is a build ID
         if build_id != None:
             params['data']['relationships']['build'] = {"data": {"id": build_id, "type": "builds"}}
