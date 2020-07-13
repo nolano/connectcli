@@ -20,7 +20,7 @@ class Profile(object):
         result = ConnectManager().create_profile(ConnectApi.connect_api_profiles.value[0],name=name,bundle_id=bundle_id,cerificate_id=certificate_id,devices=devices,type=type)
         if result['status'] == 201:
             res = result['data']['data']['attributes']
-            path = os.path.join(out_path,res['uuid']+'.mobileprovision')
+            path = os.path.join(out_path,res['name']+'.mobileprovision')
             decode_content = connectool.base64decode(res['profileContent'])
             connectool.saveByteFile(decode_content,path)
             return {'status':200,'data':result['data']['data'],'path':path}

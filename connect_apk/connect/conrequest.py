@@ -132,10 +132,13 @@ class ConnectManager(metaclass=SingletonMeta):
                         'relationships':{
                                             'bundleId':{'data':{'id':bundle_id,'type':'bundleIds'}},
                                             'certificates':{'data':[{'id':cerificate_id,'type':'certificates'}]},
-                                            'devices':{'data':devices}},
+                                        },
                         'type':'profiles'
                     }
                 }
+        # App Store profile must not include devices relationship
+        if type != 'IOS_APP_STORE':
+            params['data']['relationships']['devices'] = {'data':devices}
         connectool.prints(url)
         connectool.prints(params)
         return netmanager.post(url,params=params,header=self.__header)              
