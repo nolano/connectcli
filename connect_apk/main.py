@@ -179,6 +179,17 @@ def downloadcerts(api,outpath,limit,sort):
     click.echo(json.dumps(result))
     return result
 
+@click.command()
+@click.option('-l', '--limit', 'limit', default=100, metavar='', help='the apps count, default 100')
+@click.option('-s', '--sort', 'sort', default='bundleId', metavar='', help='the apps sort, default bundleId')
+@click.option('-b', '--bundleId', 'bundleId', default='None', metavar='', help='the bundle ID to filter, default None')
+@click.pass_obj
+def apps(api, limit, sort, filter_bundle_id):
+    '''list apps with limit, sort and filter '''
+    result = api.list_apps(limit, sort, filter_bundle_id)
+    click.echo(json.dumps(result))
+    return result
+
 cli.add_command(registerdevice)
 cli.add_command(devices)
 
@@ -197,6 +208,8 @@ cli.add_command(createprofile)
 cli.add_command(deleteprofile)
 cli.add_command(profiles)
 cli.add_command(requestprofile)
+
+cli.add_command(apps)
 
 
 
@@ -244,4 +257,7 @@ if __name__ == '__main__':
     print(result)
     
     result = api.request_profile('4KVXW4LK52')
+    print(result)
+    
+    result = api.list_apps()
     print(result)
