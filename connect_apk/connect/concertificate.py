@@ -31,12 +31,12 @@ class Certificate(object):
         return ConnectManager().delete_certificate(ConnectApi.connect_api_certificates.value[0],id)
     
     @classmethod
-    def list_cerificate(cls,limit,sort):
+    def list_certificates(cls,limit,sort):
         return ConnectManager().list_certificates(ConnectApi.connect_api_certificates.value[0],limit,sort)
     
     @classmethod
     def download_certificates(cls,outpath,limit,sort):
-        result = Certificate.list_cerificate(limit,sort)
+        result = Certificate.list_certificates(limit,sort)
         if result['status'] == 200:
             array = result['data']['data']
             for cert_obj in array:

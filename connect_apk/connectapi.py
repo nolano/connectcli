@@ -48,7 +48,7 @@ class ConnectApi(object):
     # limit 请求的证书个数
     # sort Possible values: certificateType, -certificateType, displayName, -displayName, id, -id, serialNumber, -serialNumber
     def list_certificates(self,limit=100,sort='id'):
-        return Certificate.list_cerificate(limit,sort)
+        return Certificate.list_certificates(limit,sort)
     
     ## 注册bundle id
     # bundle_id 包名（app 唯一标识）
@@ -118,6 +118,11 @@ class ConnectApi(object):
     def download_certificates(self,outpath,limit=100,id='id'):
         return Certificate.download_certificates(outpath,limit,id)
     
+    ## Download profiles
+    # outpath Output path
+    def download_profiles(self,outpath,limit=100,id='id'):
+        return Profile.download_profiles(outpath,limit,id)
+
     ## Query apps
     # limit Number of apps requested
     # sort Possible values: bundleId, -bundleId, name, -name, sku, -sku
