@@ -128,6 +128,37 @@ def getbundleidprofiles(api,id):
     return result
 
 @click.command()
+@click.option('-a', '--app_id', 'app_id', metavar='', help='App id', required=True)
+@click.option('-v', '--version_string', 'version_string', metavar='', help='Version like "1.0.0"', required=True)
+@click.option('-p', '--platform', 'platform', metavar='', 
+                help='App platform. Choice IOS, MAC_OS or TV_OS. Default IOS',
+                type=click.Choice(['IOS','MAC_OS','TV_OS']), default='IOS')
+@click.option('-r', '--release_type', 'release_type', metavar='', 
+                help='Type of release after app is approved. Choice MANUAL, AFTER_APPROVAL or SCHEDULED. Default MANUAL',
+                type=click.Choice(['MANUAL','AFTER_APPROVAL','SCHEDULED']), default='MANUAL')
+@click.option('-c', '--copyright', 'copyright', metavar='', help='Proprietary company or person')
+@click.option('-b', '--build_id', 'build_id', metavar='', help='Build id related to the version')
+@click.option('-e', '--earliest_release_date', 'earliest_release_date', help='Date-time for scheduled release', default='None')
+@click.option('-u', '--uses_idfa', 'uses_idfa', metavar='', help='If app uses IDFA', default='False')
+@click.pass_obj
+def createappversion(api, app_id, version_string, platform, release_type, copyright, build_id, earliest_release_date, uses_idfa):
+    '''create app store version with app_id, version_string, platform, release_type, copyright, build_id, earliest_release_date and uses_idfa'''
+    result = api.createappversion(app_id=app_id, version_string=version_string, platform=platform, 
+                                    release_type=release_type, copyright=copyright, build_id=build_id, 
+                                    earliest_release_date=earliest_release_date, uses_idfa=uses_idfa) 
+    click.echo(json.dumps(result))
+    return result
+
+@click.command()
+@click.option('-i', '--id', 'id', metavar='', help='the app version id', required=True)
+@click.pass_obj
+def getappversionlocalizations(api,id):
+    '''get app version localized info with id '''
+    result = api.get_app_version_localizations(id)
+    click.echo(json.dumps(result))
+    return result
+
+@click.command()
 @click.option('-n','--name','name',metavar='',help='profile name',required=True)
 @click.option('-b','--bundleid','bundleid',metavar='',help='profile contact bundleid id',required=True)
 @click.option('-c','--certificate','certificate',metavar='',help='profile contact certificate id',required=True)
@@ -217,6 +248,9 @@ cli.add_command(deletecertificate)
 cli.add_command(certificates)
 cli.add_command(downloadcerts)
 
+cli.add_command(createappversion)
+cli.add_command(getappversionlocalizations)
+
 cli.add_command(registerbundleid)
 cli.add_command(bundleids)
 cli.add_command(deletebundleid)
@@ -266,6 +300,14 @@ if __name__ == '__main__':
     print(result)
     
     result = api.delete_bundle_id('N49MX9AWAX')
+    print(result)
+
+    result = api.create_app_version(app_id='123456', version_string='1.2.3', platform='IOS', 
+                                    release_type='AFTER_APPROVAL', copyright='2020 My Company', build_id='123', 
+                                    earliest_release_date=None, uses_idfa=False)
+    print(result)
+    
+    result = api.get_app_version_localizations('a1a2a3a4-a1a2-a1a2-a1a2-a1a2a3a4a5a6')
     print(result)
     
     result = api.create_profile(name='adhoc1',bundle_id='VSLGJ82UHW',certificate_id='T553J666XW',type='IOS_APP_DEVELOPMENT')
