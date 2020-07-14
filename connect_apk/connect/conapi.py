@@ -26,5 +26,6 @@ class ConnectApi(Enum):
     
     # 财务报告
     connect_api_financeReports = base_api+'financeReports'
-
     
+    # apps
+    connect_api_apps = base_api + 'apps'

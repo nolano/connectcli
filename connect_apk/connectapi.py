@@ -11,6 +11,7 @@ from connect.concertificate import Certificate
 from connect.conappversion import AppVersion
 from connect.conbundle import BundleIdentifier
 from connect.conprofile import Profile
+from connect.conapp import App
 
 class ConnectApi(object):
     ## 初始化方法
@@ -143,3 +144,15 @@ class ConnectApi(object):
     # outpath Output path
     def download_profiles(self,outpath,limit=100,id='id'):
         return Profile.download_profiles(outpath,limit,id)
+
+    ## Query apps
+    # limit Number of apps requested
+    # sort Possible values: bundleId, -bundleId, name, -name, sku, -sku
+    # filter_bundle_id Bundle ID to filter (optional)
+    def list_apps(self, limit = 100, sort = 'bundleId', filter_bundle_id = None):
+        return App.list_apps(limit, sort, filter_bundle_id)
+    
+    ## Get app versions
+    # id App id
+    def get_app_versions(self, id):
+        return App.get_app_versions(id)
