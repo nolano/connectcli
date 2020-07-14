@@ -54,6 +54,7 @@ Commands:
   registercertificate  register certificate with csr_path,out_path and type
   registerdevice       register device into app store connect with name and...
   requestprofile       request profile with id
+  apps                 list apps with limit, sort and filter (bundleId)
 
 ```
 
@@ -122,6 +123,9 @@ if __name__ == '__main__':
     print(result)
     
     result = api.request_profile('4KVXW4LK52')
+    print(result)
+    
+    result = api.list_apps()
     print(result)
 
 ```

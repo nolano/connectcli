@@ -168,5 +168,12 @@ class ConnectManager(metaclass=SingletonMeta):
         connectool.prints(self.__header)
         return netmanager.get(url,header=self.__header) 
     
-
-    
+    ## Query apps
+    # limit Number of apps requested
+    # sort bundleId, -bundleId, name, -name, sku, -sku
+    # filter_bundle_id Bundle ID to filter (optional)
+    def list_apps(self, url:str, limit, sort, filter_bundle_id = None):
+        params = {'limit': limit, 'sort': sort}
+        if filter_bundle_id != None:
+            params['filter[bundleId]'] = filter_bundle_id
+        return netmanager.get(url,params=params,header=self.__header)
