@@ -136,8 +136,8 @@ def getbundleidprofiles(api,id):
 @click.option('-r', '--release_type', 'release_type', metavar='', 
                 help='Type of release after app is approved. Choice MANUAL, AFTER_APPROVAL or SCHEDULED. Default MANUAL',
                 type=click.Choice(['MANUAL','AFTER_APPROVAL','SCHEDULED']), default='MANUAL')
-@click.option('-c', '--copyright', 'copyright', metavar='', help='Proprietary company or person')
-@click.option('-b', '--build_id', 'build_id', metavar='', help='Build id related to the version')
+@click.option('-c', '--copyright', 'copyright', metavar='', help='Proprietary company or person', default='None')
+@click.option('-b', '--build_id', 'build_id', metavar='', help='Build id related to the version', default='None')
 @click.option('-e', '--earliest_release_date', 'earliest_release_date', help='Date-time for scheduled release', default='None')
 @click.option('-u', '--uses_idfa', 'uses_idfa', metavar='', help='If app uses IDFA', default='False')
 @click.pass_obj

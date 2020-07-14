@@ -61,7 +61,7 @@ class ConnectApi(object):
     # earliest_release_date Date-time
     # uses_idfa If app uses IDFA
     def create_app_version(self, app_id, version_string, platform = 'IOS',
-                            release_type = 'MANUAL', copyright = '', build_id = None,
+                            release_type = 'MANUAL', copyright = None, build_id = None,
                             earliest_release_date = None, uses_idfa = False):
         return AppVersion.create_app_version(app_id = app_id, version_string = version_string, platform = platform,
                                             release_type = release_type, copyright = copyright, build_id = build_id,
