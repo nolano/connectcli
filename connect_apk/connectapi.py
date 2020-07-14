@@ -129,3 +129,8 @@ class ConnectApi(object):
     # filter_bundle_id Bundle ID to filter (optional)
     def list_apps(self, limit = 100, sort = 'bundleId', filter_bundle_id = None):
         return App.list_apps(limit, sort, filter_bundle_id)
+    
+    ## Get app versions
+    # id App id
+    def get_app_versions(self, id):
+        return App.get_app_versions(id)

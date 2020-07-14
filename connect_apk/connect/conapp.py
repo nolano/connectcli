@@ -12,3 +12,7 @@ class App(object):
     @classmethod
     def list_apps(cls, limit, sort, filter_bundle_id = None):
         return ConnectManager().list_apps(ConnectApi.connect_api_apps.value, limit, sort, filter_bundle_id)
+    
+    @classmethod
+    def get_app_versions(cls, id):
+        return ConnectManager().get_app_versions(ConnectApi.connect_api_apps.value, id)
